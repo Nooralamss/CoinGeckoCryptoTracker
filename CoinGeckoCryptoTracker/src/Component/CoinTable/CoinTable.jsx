@@ -5,6 +5,7 @@ import { useContext } from "react";
 // import { CurrencyContext } from "../comtext/CurrencyContext";
 import CurrencyStore from "../../zustand/store";
 import { useNavigate } from "react-router-dom";
+import PageLoader from "../PageLoarder/PageLoader";
 function CoinTable(){
 //   const {currency}= useContext(CurrencyContext)
 const {currency}=CurrencyStore();
@@ -22,7 +23,9 @@ const {currency}=CurrencyStore();
  function handleCoinRedirect(id){
    navigate(`/details/${id}`);
  }
- 
+ if(isLoading){
+   return <PageLoader/>
+ }
  
  if(isError){
     return <div>Error:{error.message}</div>;
@@ -50,7 +53,7 @@ const {currency}=CurrencyStore();
 
          </div>
          <div className="flex flex-col w-[80vw] mx-auto">
-            {isLoading && <div>Loading...</div>}
+           
             {data?.map((coin)=>{
               return (
                <div onClick={()=>handleCoinRedirect(coin.id)} key={coin.id} className="w-full bg-transparent text-white flex py-4 px-2 

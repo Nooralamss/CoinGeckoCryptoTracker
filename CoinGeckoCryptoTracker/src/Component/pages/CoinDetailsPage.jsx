@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { FetchCoinDetails } from "../../Services/FetchCoinDetails";
 import { useEffect } from "react";
 import currencyStore from "../../zustand/store";
+import PageLoader from "../PageLoarder/PageLoader";
 
 function CoinDetailsPage(){
  const {coinId}= useParams();
@@ -21,7 +22,7 @@ if(isError){
   return <div> Error: Some thing wrong</div>
 }
 if(isLoading){
-  return <div>Loading...</div>
+  return <PageLoader/>
 }
 
 return(
