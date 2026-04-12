@@ -60,7 +60,7 @@ const {currency}=CurrencyStore();
                font-semibold  items-center justify-between cursor-pointer">
                   <div className="flex item-center justify-start gap-3 basis-[30%]">
                      <div className="w-[ 3rem] h-[ 3rem] ">
-                        <img src={coin.image} className="w-full h-full" />
+                        <img src={coin.image} className="w-full h-full" loading="lazy" />
 
                      </div>
                      <div className="flex flex-col">
@@ -85,6 +85,24 @@ const {currency}=CurrencyStore();
             })}
 
             
+
+         </div>
+         <div className="flex gap-4 justify-center items-center">
+            <button 
+            disabled={page==1}
+            onClick={()=>setPage(page-1)}
+            className="btn btn-primary btn-wide text-white text-2xl bg-amber-600"
+            >
+               Prev
+
+            </button>
+            <button 
+            className="btn btn-secondary btn-wide text-white text-2xl bg-amber-700"
+            onClick={()=>setPage(page+1)}
+            >
+               Next
+
+            </button>
 
          </div>
         
